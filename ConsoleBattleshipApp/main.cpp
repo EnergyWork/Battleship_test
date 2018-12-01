@@ -5,5 +5,6 @@ int main()
 {
 	Battleship game = Battleship();
 	game.run();
+
 	return 0;
 }

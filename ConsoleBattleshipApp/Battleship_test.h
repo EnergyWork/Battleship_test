@@ -6,10 +6,19 @@ private:
 	size_t height;
 
 public: 
-	Battleship();
-	~Battleship();
+	Battleship()
+	{
 
-	void run();
-	size_t getwidth();
-	size_t getheight();
+	}
+	~Battleship()
+	{
+
+	}
+
+	void run()
+	{
+
+	}
+	size_t getwidth() { return width; }
+	size_t getheight() { return height; }
 };
