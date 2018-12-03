@@ -3,7 +3,7 @@
 
 class CreateField {
 private:
-	char A[N][N];
+	char fld[N][N];
 	int k = 0, x, y, p, q, pos;
 
 	void setfield()
@@ -15,7 +15,7 @@ private:
 			{
 				for (int j = 0; j < N; j++)
 				{
-					A[i][j] = '?';
+					fld[i][j] = '?';
 				}
 			}
 			for (int t1 = 0, t2 = 0; t1 < 4, t2 < 8; t1++, t2 += 2)
@@ -31,20 +31,20 @@ private:
 						k = 0;
 						for (int i = -1; i <= 4 - t1; i++)
 						{
-							if (A[x - 1][y + i] == '?')
+							if (fld[x - 1][y + i] == '?')
 								k++;
-							if (A[x + 1][y + i] == '?')
+							if (fld[x + 1][y + i] == '?')
 								k++;
 						}
-						if (A[x][y + 4 - t1] == '?')
+						if (fld[x][y + 4 - t1] == '?')
 							k++;
-						if (A[x][y - 1] == '?')
+						if (fld[x][y - 1] == '?')
 							k++;
 						if (k == 14 - t2)
 						{
 							for (int i = 0; i < 4 - t1; i++)
 							{
-								A[x][y + i] = '#';
+								fld[x][y + i] = '#';
 							}
 							p++;
 						}
@@ -56,20 +56,20 @@ private:
 						k = 0;
 						for (int i = -1; i <= 4 - t1; i++)
 						{
-							if (A[x + i][y - 1] == '?')
+							if (fld[x + i][y - 1] == '?')
 								k++;
-							if (A[x + i][y + 1] == '?')
+							if (fld[x + i][y + 1] == '?')
 								k++;
 						}
-						if (A[x - 1][y] == '?')
+						if (fld[x - 1][y] == '?')
 							k++;
-						if (A[x + 4 - t1][y] == '?')
+						if (fld[x + 4 - t1][y] == '?')
 							k++;
 						if (k == 14 - t2)
 						{
 							for (int i = 0; i < 4 - t1; i++)
 							{
-								A[x + i][y] = '#';
+								fld[x + i][y] = '#';
 							}
 							p++;
 						}
@@ -84,7 +84,7 @@ private:
 			{
 				for (int j = 1; j < N - 1; j++)
 				{
-					if (A[i][j] == '#')
+					if (fld[i][j] == '#')
 					{
 						q++;
 					}
@@ -96,7 +96,7 @@ private:
 				{
 					for (int j = 1; j < N - 1; j++)
 					{
-							cout << A[i][j] << " ";
+							cout << fld[i][j] << " ";
 					}
 					cout << endl;
 				}
@@ -113,6 +113,6 @@ public:
 	{
 
 	}
-	char getcell(int x, int y) { return A[x][y]; }
-	void setcell(int x, int y, char s) { A[x][y] = s; }
+	char getcell(int x, int y) { return fld[x][y]; }
+	void setcell(int x, int y, char s) { fld[x][y] = s; }
 };

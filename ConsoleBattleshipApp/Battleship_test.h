@@ -93,13 +93,13 @@ public:
 						}
 						if (field.getcell(coordx, coordy + K) == '?' || field.getcell(coordx, coordy + K) == '0')
 							k++;
-						if (A[coordx][coordy - 1] == '?' || A[coordx][coordy - 1] == '0')
+						if (field.getcell(coordx, coordy - 1) == '?' || field.getcell(coordx, coordy - 1) == '0')
 							k++;
 						if (k == t)
 						{
 							for (int i = 0; i < K; i++)
 							{
-								A[coordx][coordy + i] = 'x';
+								field.setcell(coordx, coordy + i, 'x');
 							}
 						}
 						break;
@@ -124,7 +124,7 @@ public:
 					{
 						for (j = a; j < K + a; j++)
 						{
-							if (A[i][j] == 'v')
+							if (field.getcell(i, j) == 'v')
 								k++;
 						}
 					}
@@ -144,20 +144,20 @@ public:
 						k = 0;
 						for (int i = -1; i <= L; i++)
 						{
-							if (A[coordx + i][coordy - 1] == '?' || A[coordx + i][coordy - 1] == '0')
+							if (field.getcell(coordx + i, coordy - 1) == '?' || field.getcell(coordx + i, coordy - 1) == '0')
 								k++;
-							if (A[coordx + i][coordy + 1] == '?' || A[coordx + i][coordy + 1] == '0')
+							if (field.getcell(coordx + i, coordy + 1) == '?' || field.getcell(coordx + i, coordy + 1) == '0')
 								k++;
 						}
-						if (A[coordx - 1][coordy] == '?' || A[coordx - 1][coordy] == '0')
+						if (field.getcell(coordx - 1, coordy) == '?' || field.getcell(coordx - 1, coordy) == '0')
 							k++;
-						if (A[coordx + L][coordy] == '?' || A[coordx + L][coordy] == '0')
+						if (field.getcell(coordx + L, coordy) == '?' || field.getcell(coordx + L, coordy) == '0')
 							k++;
 						if (k == t)
 						{
 							for (int i = 0; i < L; i++)
 							{
-								A[coordx + i][coordy] = 'x';
+								field.setcell(coordx + 1, coordy, 'x');
 							}
 						}
 						break;
