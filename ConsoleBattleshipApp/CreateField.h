@@ -1,19 +1,30 @@
 #include "libs.h"
-#define N 12
+#define sizeFld 12
 
 class CreateField {
 private:
-	char fld[N][N];
+	char fld[sizeFld][sizeFld];
 	int k = 0, x, y, p, q, pos;
-
+	
+	void printField()
+	{
+		for (int i = 1; i < sizeFld - 1; i++)
+		{
+			for (int j = 1; j < sizeFld - 1; j++)
+			{
+				cout << fld[i][j] << " ";
+			}
+			cout << endl;
+		}
+	}
 	void setfield()
 	{
 		srand((unsigned)time(NULL));
 		for (int i = 0; i < 100; i++)
 		{
-			for (int i = 0; i < N; i++)
+			for (int i = 0; i < sizeFld; i++)
 			{
-				for (int j = 0; j < N; j++)
+				for (int j = 0; j < sizeFld; j++)
 				{
 					fld[i][j] = '?';
 				}
@@ -80,9 +91,9 @@ private:
 				}
 			}
 			q = 0;
-			for (int i = 1; i < N - 1; i++)
+			for (int i = 1; i < sizeFld - 1; i++)
 			{
-				for (int j = 1; j < N - 1; j++)
+				for (int j = 1; j < sizeFld - 1; j++)
 				{
 					if (fld[i][j] == '#')
 					{
@@ -92,14 +103,7 @@ private:
 			}
 			if (q == 20)
 			{
-				for (int i = 1; i < N - 1; i++)
-				{
-					for (int j = 1; j < N - 1; j++)
-					{
-							cout << fld[i][j] << " ";
-					}
-					cout << endl;
-				}
+				printField();
 				break;
 			}
 		}

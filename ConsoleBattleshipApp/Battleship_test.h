@@ -7,14 +7,14 @@ private:
 	int L, K, i, j;
 	int a, b;
 	int coordx, coordy;
-	CreateField field;
+	CreateField field = CreateField();
 
 	void printField()
 	{
 		system("cls");
-		for (int i = 1; i < N - 1; i++)
+		for (int i = 1; i < sizeFld - 1; i++)
 		{
-			for (int j = 1; j < N - 1; j++)
+			for (int j = 1; j < sizeFld - 1; j++)
 			{
 				cout << field.getcell(i, j) << " ";
 			}
@@ -33,11 +33,11 @@ public:
 
 	void run()
 	{
-		field = CreateField();
+
 	}
-	void stop()
+	bool stop()
 	{
-		
+		return false;
 	}
 	void turn(int turnx, int turny)
 	{
@@ -55,8 +55,8 @@ public:
 		for (int K = 4, t = 14; K >= 1, t >= 8; K--, t -= 2)
 		{
 			L = 1;
-			x = N - K;
-			y = N - L;
+			x = sizeFld - K;
+			y = sizeFld - L;
 			for (int b = 0; b < y + 1; b++)
 			{
 				for (int a = 0; a < x + 1; a++)
@@ -72,9 +72,9 @@ public:
 					}
 					if (k == L * K)
 					{
-						for (int x = 1; x < N - 1; x++)
+						for (int x = 1; x < sizeFld - 1; x++)
 						{
-							for (int y = 1; y < N - 1; y++)
+							for (int y = 1; y < sizeFld - 1; y++)
 							{
 								if (((x >= b) && (x < i)) && ((y >= a) && (y < j)))
 								{
@@ -113,8 +113,8 @@ public:
 		for (int L = 4, t = 14; L >= 1, t >= 8; L--, t -= 2)
 		{
 			K = 1;
-			x = N - K;
-			y = N - L;
+			x = sizeFld - K;
+			y = sizeFld - L;
 			for (int b = 0; b < y + 1; b++)
 			{
 				for (int a = 0; a < x + 1; a++)
@@ -130,9 +130,9 @@ public:
 					}
 					if (k == L * K)
 					{
-						for (int x = 1; x < N - 1; x++)
+						for (int x = 1; x < sizeFld - 1; x++)
 						{
-							for (int y = 1; y < N - 1; y++)
+							for (int y = 1; y < sizeFld - 1; y++)
 							{
 								if (((x >= b) && (x < i)) && ((y >= a) && (y < j)))
 								{
