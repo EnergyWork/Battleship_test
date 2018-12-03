@@ -123,10 +123,15 @@ public:
 	{
 		system("cls");
 		SetConsoleTextAttribute(console, 7);
-		for (int i = 1; i < sizeFld * 2 + 2; i++)
+		for (int i = 2; i < sizeFld + 1; i++)
+		{
+			i == 2 ? cout << "   | " << "" : cout << i - 2 << " ";
+			i == sizeFld ? cout << endl : cout << "";
+		}
+		for (int i = 1; i < sizeFld * 2 + 1; i++)
 		{
 			i == 2 ? cout << "__|" << "" : cout << "_" << "";
-			i == sizeFld * 2 + 1 ? cout << endl : cout << "";
+			i == sizeFld * 2 ? cout << endl : cout << "";
 		}
 		for (int i = 1; i < sizeFld - 1; i++)
 		{

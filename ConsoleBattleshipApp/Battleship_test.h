@@ -8,6 +8,7 @@ private:
 	int a, b;
 	int coordx, coordy;
 	CreateField field = CreateField();
+
 public: 
 	Battleship()
 	{
