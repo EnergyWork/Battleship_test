@@ -1,4 +1,3 @@
-#include "libs.h"
 #include "CreateField.h"
 
 class Battleship {
