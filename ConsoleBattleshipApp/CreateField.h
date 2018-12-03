@@ -123,13 +123,26 @@ public:
 	{
 		system("cls");
 		SetConsoleTextAttribute(console, 7);
+		for (int i = 1; i < sizeFld * 2 + 2; i++)
+		{
+			i == 2 ? cout << "__|" << "" : cout << "_" << "";
+			i == sizeFld * 2 + 1 ? cout << endl : cout << "";
+		}
 		for (int i = 1; i < sizeFld - 1; i++)
 		{
 			for (int j = 1; j < sizeFld - 1; j++)
 			{
+				if (j == 1)
+				{
+					if (i < 10)
+						cout << " " << i << " | ";
+					else
+						cout << i << " | ";
+				}
+
 				if (fld[i][j] == '#')
 				{
-					SetConsoleTextAttribute(console, 10);
+					SetConsoleTextAttribute(console, 10);// replace 10 -> 7
 					cout << "?" << " ";
 				}
 				else if (fld[i][j] == 'x')
@@ -150,7 +163,8 @@ public:
 				
 			}
 			cout << endl;
+			SetConsoleTextAttribute(console, 7);
 		}
-		SetConsoleTextAttribute(console, 7);
+		cout << endl;
 	}
 };
