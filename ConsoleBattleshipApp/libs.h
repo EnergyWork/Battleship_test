@@ -1,5 +1,4 @@
-#include <fstream>
 #include <iostream>
 #include <locale>
-#include <vector>
+#include <windows.h>
 using namespace std;

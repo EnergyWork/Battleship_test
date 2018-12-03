@@ -4,19 +4,9 @@
 class CreateField {
 private:
 	char fld[sizeFld][sizeFld];
-	int k = 0, x, y, p, q, pos;
+	int k = 0, x, y, p, q, pos, count = 0;
+	HANDLE console;
 	
-	void printField()
-	{
-		for (int i = 1; i < sizeFld - 1; i++)
-		{
-			for (int j = 1; j < sizeFld - 1; j++)
-			{
-				cout << fld[i][j] << " ";
-			}
-			cout << endl;
-		}
-	}
 	void setfield()
 	{
 		srand((unsigned)time(NULL));
@@ -111,6 +101,7 @@ private:
 public:
 	CreateField()
 	{
+		console = GetStdHandle(STD_OUTPUT_HANDLE);
 		setfield();
 	}
 	~CreateField()
@@ -119,4 +110,47 @@ public:
 	}
 	char getcell(int x, int y) { return fld[x][y]; }
 	void setcell(int x, int y, char s) { fld[x][y] = s; }
+	bool win()
+	{
+		for (size_t i = 0; i < sizeFld - 1; i++)
+			for (size_t j = 0; j < sizeFld - 1; j++)
+				count++;
+		if (count == 0)
+			return true;
+		else return false;
+	}
+	void printField()
+	{
+		system("cls");
+		SetConsoleTextAttribute(console, 7);
+		for (int i = 1; i < sizeFld - 1; i++)
+		{
+			for (int j = 1; j < sizeFld - 1; j++)
+			{
+				if (fld[i][j] == '#')
+				{
+					SetConsoleTextAttribute(console, 10);
+					cout << "?" << " ";
+				}
+				else if (fld[i][j] == 'x')
+				{
+					SetConsoleTextAttribute(console, 12);
+					cout << fld[i][j] << " ";
+				}
+				else if (fld[i][j] == 'v')
+				{
+					SetConsoleTextAttribute(console, 4);
+					cout << fld[i][j] << " ";
+				}
+				else 
+				{
+					SetConsoleTextAttribute(console, 7);
+					cout << fld[i][j] << " ";
+				}
+				
+			}
+			cout << endl;
+		}
+		SetConsoleTextAttribute(console, 7);
+	}
 };

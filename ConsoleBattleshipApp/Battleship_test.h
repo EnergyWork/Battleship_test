@@ -8,19 +8,6 @@ private:
 	int a, b;
 	int coordx, coordy;
 	CreateField field = CreateField();
-
-	void printField()
-	{
-		system("cls");
-		for (int i = 1; i < sizeFld - 1; i++)
-		{
-			for (int j = 1; j < sizeFld - 1; j++)
-			{
-				cout << field.getcell(i, j) << " ";
-			}
-			cout << endl;
-		}
-	}
 public: 
 	Battleship()
 	{
@@ -31,27 +18,19 @@ public:
 
 	}
 
-	void run()
-	{
-
-	}
-	bool stop()
-	{
-		return false;
-	}
+	bool win() { return field.win(); }
 	void turn(int turnx, int turny)
 	{
 		if (field.getcell(turnx, turny) == '#')
 			field.setcell(turnx, turny, 'v');
 		else if (field.getcell(turnx, turny) == 'v')
-			field.setcell(turnx, turny, 'v');
+			return;
 		else if (field.getcell(turnx, turny) == 'x')
-			field.setcell(turnx, turny, 'x');
+			return;
 		else
 			field.setcell(turnx, turny, '0');
 
 		//Горизонтальный проход
-
 		for (int K = 4, t = 14; K >= 1, t >= 8; K--, t -= 2)
 		{
 			L = 1;
@@ -109,7 +88,6 @@ public:
 		}
 
 		//Вертикальный проход
-
 		for (int L = 4, t = 14; L >= 1, t >= 8; L--, t -= 2)
 		{
 			K = 1;
@@ -157,7 +135,7 @@ public:
 						{
 							for (int i = 0; i < L; i++)
 							{
-								field.setcell(coordx + 1, coordy, 'x');
+								field.setcell(coordx + i, coordy, 'x');
 							}
 						}
 						break;
@@ -165,6 +143,6 @@ public:
 				}
 			}
 		}
-		printField();
+		field.printField();
 	}
 };
