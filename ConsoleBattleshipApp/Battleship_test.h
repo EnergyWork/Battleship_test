@@ -6,12 +6,12 @@ private:
 	int L, K, i, j;
 	int a, b;
 	int coordx, coordy;
-	CreateField field = CreateField();
+	CreateField field;
 
 public: 
 	Battleship()
 	{
-
+		field = CreateField();
 	}
 	~Battleship()
 	{
@@ -28,7 +28,7 @@ public:
 		else if (field.getcell(turnx, turny) == 'x')
 			return;
 		else
-			field.setcell(turnx, turny, '0');
+			field.setcell(turnx, turny, 'o');
 
 		//Горизонтальный проход
 		for (int K = 4, t = 14; K >= 1, t >= 8; K--, t -= 2)
@@ -65,14 +65,14 @@ public:
 						k = 0;
 						for (int i = -1; i <= K; i++)
 						{
-							if (field.getcell(coordx - 1, coordy + i) == '?' || field.getcell(coordx - 1, coordy + i) == '0')
+							if (field.getcell(coordx - 1, coordy + i) == '?' || field.getcell(coordx - 1, coordy + i) == 'o')
 								k++;
-							if (field.getcell(coordx + 1, coordy + i) == '?' || field.getcell(coordx + 1, coordy + i) == '0')
+							if (field.getcell(coordx + 1, coordy + i) == '?' || field.getcell(coordx + 1, coordy + i) == 'o')
 								k++;
 						}
-						if (field.getcell(coordx, coordy + K) == '?' || field.getcell(coordx, coordy + K) == '0')
+						if (field.getcell(coordx, coordy + K) == '?' || field.getcell(coordx, coordy + K) == 'o')
 							k++;
-						if (field.getcell(coordx, coordy - 1) == '?' || field.getcell(coordx, coordy - 1) == '0')
+						if (field.getcell(coordx, coordy - 1) == '?' || field.getcell(coordx, coordy - 1) == 'o')
 							k++;
 						if (k == t)
 						{
@@ -122,14 +122,14 @@ public:
 						k = 0;
 						for (int i = -1; i <= L; i++)
 						{
-							if (field.getcell(coordx + i, coordy - 1) == '?' || field.getcell(coordx + i, coordy - 1) == '0')
+							if (field.getcell(coordx + i, coordy - 1) == '?' || field.getcell(coordx + i, coordy - 1) == 'o')
 								k++;
-							if (field.getcell(coordx + i, coordy + 1) == '?' || field.getcell(coordx + i, coordy + 1) == '0')
+							if (field.getcell(coordx + i, coordy + 1) == '?' || field.getcell(coordx + i, coordy + 1) == 'o')
 								k++;
 						}
-						if (field.getcell(coordx - 1, coordy) == '?' || field.getcell(coordx - 1, coordy) == '0')
+						if (field.getcell(coordx - 1, coordy) == '?' || field.getcell(coordx - 1, coordy) == 'o')
 							k++;
-						if (field.getcell(coordx + L, coordy) == '?' || field.getcell(coordx + L, coordy) == '0')
+						if (field.getcell(coordx + L, coordy) == '?' || field.getcell(coordx + L, coordy) == 'o')
 							k++;
 						if (k == t)
 						{
