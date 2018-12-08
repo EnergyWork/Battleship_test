@@ -24,15 +24,21 @@ public:
 	bool win() { return field.win(); }
 	void turn(int turnx, int turny)
 	{
-		countTuns++;
 		if (field.getcell(turnx, turny) == '#')
+		{
 			field.setcell(turnx, turny, 'v');
+			countTuns++;
+		}		
 		else if (field.getcell(turnx, turny) == 'v')
 			return;
 		else if (field.getcell(turnx, turny) == 'x')
 			return;
 		else
+		{
 			field.setcell(turnx, turny, 'o');
+			countTuns++;
+		}
+			
 
 		//Горизонтальный проход
 		for (int K = 4, t = 14; K >= 1, t >= 8; K--, t -= 2)
@@ -149,5 +155,5 @@ public:
 
 		field.printField();
 	}
-	size_t getcountTurns() {return countTuns; }
+	size_t getcountTurns() { return countTuns; }
 };

@@ -114,7 +114,8 @@ public:
 	{
 		for (size_t i = 0; i < sizeFld - 1; i++)
 			for (size_t j = 0; j < sizeFld - 1; j++)
-				count++;
+				if (fld[i][j] == '#')
+					count++;
 		if (count == 0)
 			return true;
 		else return false;
