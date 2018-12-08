@@ -91,7 +91,7 @@ public:
 			}
 		}
 		//Вертикальный проход
-		/*for (int L = 4, t = 14; L >= 1, t >= 8; L--, t -= 2)
+		for (int L = 4, t = 14; L >= 1, t >= 8; L--, t -= 2)
 		{
 			K = 1;
 			x = sizeFld - K;
@@ -145,7 +145,7 @@ public:
 					}
 				}
 			}
-		}*/
+		}
 
 		field.printField();
 	}
