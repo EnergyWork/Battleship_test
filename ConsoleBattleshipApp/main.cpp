@@ -7,6 +7,7 @@ void playGame()
 
 	while (turnx != 0 || turny != 0 && !game.win())
 	{
+		cout << "Количество ходов: " << game.getcountTurns() << endl;
 		cout << "Сделайте ход (0, 0 - выход):" << endl;
 		cin >> turnx >> turny;
 		game.turn(turnx, turny);

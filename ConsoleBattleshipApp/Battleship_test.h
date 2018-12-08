@@ -2,16 +2,19 @@
 
 class Battleship {
 private:
-	int k = 0, x, y, p, q, pos;
+	int k, x, y, p, q, pos;
 	int L, K, i, j;
 	int a, b;
 	int coordx, coordy;
 	CreateField field;
+	size_t countTuns;
 
-public: 
+public:
 	Battleship()
 	{
 		field = CreateField();
+		countTuns = 0;
+		k = 0;
 	}
 	~Battleship()
 	{
@@ -21,6 +24,7 @@ public:
 	bool win() { return field.win(); }
 	void turn(int turnx, int turny)
 	{
+		countTuns++;
 		if (field.getcell(turnx, turny) == '#')
 			field.setcell(turnx, turny, 'v');
 		else if (field.getcell(turnx, turny) == 'v')
@@ -86,9 +90,8 @@ public:
 				}
 			}
 		}
-
 		//Вертикальный проход
-		for (int L = 4, t = 14; L >= 1, t >= 8; L--, t -= 2)
+		/*for (int L = 4, t = 14; L >= 1, t >= 8; L--, t -= 2)
 		{
 			K = 1;
 			x = sizeFld - K;
@@ -142,7 +145,9 @@ public:
 					}
 				}
 			}
-		}
+		}*/
+
 		field.printField();
 	}
+	size_t getcountTurns() {return countTuns; }
 };
