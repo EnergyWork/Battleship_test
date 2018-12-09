@@ -4,7 +4,7 @@
 class CreateField {
 private:
 	char fld[sizeFld][sizeFld];
-	int k = 0, x, y, p, q, pos, count = 0;
+	int k = 0, x, y, p, q, pos, count = 20;
 	HANDLE console;
 	
 	void setfield()
@@ -110,16 +110,8 @@ public:
 	}
 	char getcell(int x, int y) { return fld[x][y]; }
 	void setcell(int x, int y, char s) { fld[x][y] = s; }
-	bool win()
-	{
-		for (size_t i = 0; i < sizeFld - 1; i++)
-			for (size_t j = 0; j < sizeFld - 1; j++)
-				if (fld[i][j] == '#')
-					count++;
-		if (count == 0)
-			return true;
-		else return false;
-	}
+	void setcount() { count--; }
+	bool win() { return (count == 0 ? 1 : 0); }
 	void printField()
 	{
 		system("cls");
@@ -145,7 +137,6 @@ public:
 					else
 						cout << i << " | ";
 				}
-
 				if (fld[i][j] == '#')
 				{
 					SetConsoleTextAttribute(console, 10);// replace 10 -> 7
@@ -165,12 +156,10 @@ public:
 				{
 					SetConsoleTextAttribute(console, 7);
 					cout << fld[i][j] << " ";
-				}
-				
+				}			
 			}
 			cout << endl;
 			SetConsoleTextAttribute(console, 7);
 		}
-		cout << endl;
 	}
 };

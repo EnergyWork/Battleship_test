@@ -7,13 +7,13 @@ private:
 	int a, b;
 	int coordx, coordy;
 	CreateField field;
-	size_t countTuns;
+	size_t countTurns;
 
 public:
 	Battleship()
 	{
 		field = CreateField();
-		countTuns = 0;
+		countTurns = 0;
 		k = 0;
 	}
 	~Battleship()
@@ -27,16 +27,19 @@ public:
 		if (field.getcell(turnx, turny) == '#')
 		{
 			field.setcell(turnx, turny, 'v');
-			countTuns++;
+			field.setcount();
+			countTurns++;
 		}		
 		else if (field.getcell(turnx, turny) == 'v')
 			return;
 		else if (field.getcell(turnx, turny) == 'x')
 			return;
+		else if (field.getcell(turnx, turny) == 'o')
+			return;
 		else
 		{
 			field.setcell(turnx, turny, 'o');
-			countTuns++;
+			countTurns++;
 		}
 			
 
@@ -88,6 +91,30 @@ public:
 						{
 							for (int i = 0; i < K; i++)
 							{
+								if (i == 0 && coordy != 1)
+								{
+									field.setcell(coordx, coordy - 1, 'o');
+									if (coordx != 1)
+										field.setcell(coordx - 1, coordy - 1, 'o');
+									if (coordx != 10)
+										field.setcell(coordx + 1, coordy - 1, 'o');
+								}
+								
+								if (i == K - 1 && coordy + i != 10)
+								{
+									field.setcell(coordx, coordy + i + 1, 'o');
+									if (coordx != 1)
+										field.setcell(coordx - 1, coordy + i + 1, 'o');
+									if (coordx != 10)
+										field.setcell(coordx + 1, coordy + i + 1, 'o');
+								}							
+
+								if (coordx != 1)
+									field.setcell(coordx - 1, coordy + i, 'o');
+		
+								if (coordx != 10)
+									field.setcell(coordx + 1, coordy + i, 'o');
+
 								field.setcell(coordx, coordy + i, 'x');
 							}
 						}
@@ -144,6 +171,30 @@ public:
 						{
 							for (int i = 0; i < L; i++)
 							{
+								if (i == 0 && coordx != 1)
+								{
+									field.setcell(coordx - 1, coordy, 'o');
+									if (coordy != 1)
+										field.setcell(coordx - 1, coordy - 1, 'o');
+									if (coordy != 10)
+										field.setcell(coordx - 1, coordy + 1, 'o');
+								}
+
+								if (i == L - 1 && coordx + i != 10)
+								{
+									field.setcell(coordx + i + 1, coordy, 'o');
+									if (coordy != 1)
+										field.setcell(coordx + i + 1, coordy - 1, 'o');
+									if (coordy != 10)
+										field.setcell(coordx + i + 1, coordy + 1, 'o');
+								}
+
+								if (coordy != 1)
+									field.setcell(coordx + i, coordy - 1, 'o');
+
+								if (coordy != 10)
+									field.setcell(coordx + i, coordy + 1, 'o');
+
 								field.setcell(coordx + i, coordy, 'x');
 							}
 						}
@@ -155,5 +206,5 @@ public:
 
 		field.printField();
 	}
-	size_t getcountTurns() { return countTuns; }
+	size_t getcountTurns() { return countTurns; }
 };
